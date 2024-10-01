@@ -1,5 +1,6 @@
 ﻿@page "/servers"
 @using ServerManagement.Components.Controls
+@inject NavigationManager NavigationManager
 @* @rendermode InteractiveServer *@
 
 <h3>Servers</h3>
@@ -38,13 +39,32 @@
                 @(server.IsOnline ? "online" : "offline")
             </span>
             <a href="/servers/@server.ServerId" class="btn btn-link">Edit</a>
+            &nbsp;
+            <EditForm
+                Model="server"
+                FormName="@($"form-server- {server.ServerId}")"
+            OnValidSubmit="@(() => {DeleteServer(server.ServerId);})">
+            <button type="submit" class="btn btn-primary">Delete</button>
+            </EditForm>
         </li>
        
     }
     
 </ul>
+<p>
+    <a href="/servers/add" class="btn btn-primary">Add</a>
+</p>
 
 @code {
     private List<Server> servers = ServerRepository.GetServersByCity("Toronto");
     private List<String> cities = CitiesRepository.GetCities(); 
+
+    private void DeleteServer(int ServerId)
+    {
+        if(ServerId > 0)
+        {
+            ServerRepository.DeleteServer(ServerId);
+            NavigationManager.NavigateTo("/servers");
+        }
+    }
 }

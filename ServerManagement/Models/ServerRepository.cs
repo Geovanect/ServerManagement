@@ -20,7 +20,7 @@
             new Server { ServerId = 14, Name ="Server14", City="Halifax"},
         };
 
-        private static void AddServer(Server server)
+        public static void AddServer(Server server)
         {
             var maxId = servers.Max(s => s.ServerId);
             server.ServerId = maxId + 1;
