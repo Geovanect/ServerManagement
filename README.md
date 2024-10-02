@@ -1,0 +1,2 @@
+Finalizando um projeto basico de crud no Blazor, onde o usuario poderá navegar até a sessão  Servidores, mostrando a ele servidores disponiveis de uma determinada cidade e possbilitando que ele adicione servidores exclusivamente para aquela cidade,
+são funções permitidas pelo usuario, adicionar, remover e editar um servidor podendo tambem clicar no botão acima do forms onde ele poderar ligar e desligar o status de um servidor
